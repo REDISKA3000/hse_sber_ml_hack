@@ -44,3 +44,8 @@ params = {'depth': 6, 'learning_rate': 0.1, 'iterations': 500, 'l2_leaf_reg': 7,
 ```
 That is how we became TOP-5 team :)
 
+## our team
+[Me](https://github.com/REDISKA3000)<br/>
+[Solomon](https://github.com/veidlink)<br/>
+[Mikhail](https://github.com/Tehnorobot)<br/>
+[Vlad]()
