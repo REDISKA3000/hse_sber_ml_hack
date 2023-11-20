@@ -22,13 +22,13 @@ After getting first result we decided to undertake feature selection. Firstly we
 
 From this plot we can make trustworthy assumptions about how features affected the training of the model.
 It can be said that the mearchant categories best help to identify the gender of the client. 
-- mcc_5977 - Beauty stores
-- mcc_5661 - Shoes stores
-- mcc_5912 - Pharmacies
-- mcc_5533 - Сar spare parts and accessories
-- mcc_5541 - Car service stations
-- mcc_5691 - Men's and women's clothing stores
-- mcc_5621 - Women's clothing
+- mcc_5977 - beauty stores
+- mcc_5661 - shoes stores
+- mcc_5912 - pharmacies
+- mcc_5533 - car spare parts and accessories
+- mcc_5541 - car service stations
+- mcc_5691 - men's and women's clothing stores
+- mcc_5621 - women's clothing
 
 As most Sber customers are Russian and CIS citizens, from general experience we assumed that women are more likely do shoppinng in beauty stores, shoes stores, pharmacies and clothing stores. Whereas men are more likely to spend money on car service and car spare parts.
 
