@@ -16,7 +16,7 @@ Initially, we received transactions data, where every transaction is described b
 ![alt text](https://github.com/REDISKA3000/hse_sber_ml_hack/blob/d0a54c852ea16279efea199ace7fed0a859b7960/static/ds_hsesber.jpg)
 Then we started from feature engineering appling grouping by client_id and every feature (except for **term_id** and **trans_city**) and diverse discriptive statistics to receive comprehensive information about each customer, you can find it in `transformation.py`.
 
-Obtained new datasets `new_train_big.csv` and `new_test_big.csv`, we experimented with distinct ml-models. With the usage of *Optuna* we optimized hyperparameters for gradient boosting algorthms: *CatBoost*,*XGBoost*,*LightGBM*.
+Obtained new datasets `new_train_big.csv` and `new_test_big.csv`, we experimented with distinct ml-models. With the usage of *Optuna* we optimized hyperparameters for gradient boosting algorthms: *CatBoost*, *XGBoost*, *LightGBM*.
 After getting first result we decided to undertake feature selection. Firstly we estimated feature importance using *Shap* package, that estimates the Shepley value for each feature.The value shows, how important this feature is on average for the model.
 ![alt text](https://github.com/REDISKA3000/hse_sber_ml_hack/blob/2e325a34c593cd75961900f39b39040caeee7050/static/fi_hsesber.jpg)
 
