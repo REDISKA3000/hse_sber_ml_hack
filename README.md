@@ -14,7 +14,7 @@ Initially, we received transactions data, where every transaction is described b
 - **gender** - our traget feature
 
 ![alt text](https://github.com/REDISKA3000/hse_sber_ml_hack/blob/d0a54c852ea16279efea199ace7fed0a859b7960/static/ds_hsesber.jpg)
-Then we started from feature engineering appling grouping by client_id and every feature (except for **term_id** and **trans_city**) and diverse aggregation techinques to receive comprehensive information about each customer, you can find it in `transformation.py`.
+Then we started from feature engineering appling grouping by client_id and every feature (except for **term_id** and **trans_city**) and diverse discriptive statistics to receive comprehensive information about each customer, you can find it in `transformation.py`.
 
 Obtained new datasets `new_train_big.csv` and `new_test_big.csv`, we experimented with distinct ml-models. With the usage of *Optuna* we optimized hyperparameters for gradient boosting algorthms: *CatBoost*,*XGBoost*,*LightGBM*.
 After getting first result we decided to undertake feature selection. Firstly we estimated feature importance using *Shap* package, that estimates the Shepley value for each feature.The value shows, how important this feature is on average for the model.
@@ -30,4 +30,17 @@ It can be said that the mearchant categories best help to identify the gender of
 - mcc_5691 - Men's and women's clothing stores
 - mcc_5621 - Women's clothing
 
-As most Sber customers are Russian and CIS citizens, from general experience we assumed that women are more likely do shoppinng in beauty stores, shoes stor, pharmacies and clothing store. Whereas men are more likely to spend money on car service and car spare parts.
+As most Sber customers are Russian and CIS citizens, from general experience we assumed that women are more likely do shoppinng in beauty stores, shoes stores, pharmacies and clothing stores. Whereas men are more likely to spend money on car service and car spare parts.
+
+![alt text](https://github.com/REDISKA3000/hse_sber_ml_hack/blob/375572d82e7755220807f85d420602081394ee21/static/shap_force_plot.png)
+
+Again we the usage of *Shap* we managed to prove our assumption and derive that 0 class stand for womend and 1 class stands for men. We can see on the plot above, that features representing women "move" separating line to the left, 0 class. Thus, we are preety confident that 0 class stands for women.
+
+One more significant thing that I should note is that we also attmepted to construct ANN for binary classification, its architecture one can find in `models.py`. The model is really simple, although it was enough to receive roc_auc score is equal to 0.86. 
+
+Our ultimate solution that resulted in roc_auc = 0.8872, was *CatBoostClassifier* trained on the extended dataset, with the following parameters.
+```python
+params = {'depth': 6, 'learning_rate': 0.1, 'iterations': 500, 'l2_leaf_reg': 7, 'min_data_in_leaf': 1, 'loss_function': 'Logloss', 'eval_metric': 'AUC'}
+```
+That is how we became TOP-5 team :)
+
